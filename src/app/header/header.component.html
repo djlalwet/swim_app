@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" routerLink="home">
-        <img [src]="'../../assets/logo.png'" alt="Swim7107">
+        <img [src]="'./assets/logo.png'" alt="Swim7107">
       </a>
     </div>
 
@@ -22,9 +22,9 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a routerLink="events/1">Event 1</a></li>
-            <li><a routerLink="events/2">Event 2</a></li>
-            <li><a routerLink="events/3">Event 3</a></li>
+            <li><a routerLink="events/1">{{eventList[0].name}}</a></li>
+            <li><a routerLink="events/2">{{eventList[1].name}}</a></li>
+            <li><a routerLink="events/3">{{eventList[2].name}}</a></li>
           </ul>
         </li>
         <!--/* add other links here */-->

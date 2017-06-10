@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/switchMap';
 import { CookieService } from 'ngx-cookie';
 import { User, UserService }  from '../user.service';
+import { EventListService }  from '../event-list.service';
 
 declare var jquery:any;
 declare var $ :any;
@@ -21,17 +22,18 @@ export class HeaderComponent implements OnInit {
   };
 
   user;
-
-  userLoggedIn: boolean = false;
-
+  eventList;
+  userLoggedIn: boolean = false
   invalidInput: boolean = false;
   subscription: Subscription;
 
 
   constructor(
     private _userService: UserService,
+    private _eventService: EventListService,
     private router: Router,
     private _cookieService:CookieService) {
+      this.eventList = this._eventService.getEvents();
       this.user = _cookieService.getObject("user");
       this.userLoggedIn = this.user? true : false;
       this.subscription = this._userService.getUserSubjectAsObservable().subscribe(() => {
