@@ -1,0 +1,61 @@
+<nav id="header" class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-buttons" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="home">
+        <img [src]="'../../assets/logo.png'" alt="Swim7107">
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="header-buttons">
+      
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" routerLink="events/1">Events
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="events/1">Event 1</a></li>
+            <li><a routerLink="events/2">Event 2</a></li>
+            <li><a routerLink="events/3">Event 3</a></li>
+          </ul>
+        </li>
+        <!--/* add other links here */-->
+      </ul>
+
+      <div *ngIf="userLoggedIn; else notLogged">
+        <ul class="nav navbar-nav navbar-right">          
+          <li><a routerLink="profile"><span class="glyphicon glyphicon-user"></span> Hello {{user.firstname}} {{user.lastname}}</a></li>
+          <li><a (click)="logout()" routerLink="home"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
+        </ul>
+      </div>
+
+      <ng-template #notLogged>
+        <form class="navbar-form navbar-right" (ngSubmit)="validate()" #logInForm = "ngForm">
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Email" name='email' [(ngModel)]="input.email" #name="ngModel">
+            <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="input.password" #password="ngModel">
+          </div>
+          <button type="submit" class="btn btn-default">Log in</button>
+        </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a routerLink="registration">Register Now!</a></li>
+      </ul>
+      </ng-template>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
+<div class="dropdown">
+  <ul  id="invalidLogIn" class="dropdown-menu dropdown-menu-right collapse">
+    <li>Invalid Email or Password</li>
+  </ul>
+</div>
+</nav>

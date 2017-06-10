@@ -1,0 +1,11 @@
+input.ng-invalid.ng-touched{
+  border: 2px solid red
+}
+
+btn[disabled]{
+  opacity: 0.4;
+}
+
+.alert {
+  margin: 10px;
+}

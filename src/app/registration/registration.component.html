@@ -1,0 +1,81 @@
+<div class="container-fluid">
+	<form (ngSubmit)="register(info)" name="regForm" #regForm="ngForm" novalidate>
+    <section class="container">
+			<div class="container-page">				
+				<div class="col-md-6">
+					<h3 class="dark-grey">Registration</h3>
+					
+					<div class="form-group col-lg-6">
+						<label>Firstname</label>
+						<input type="text" name="firstname" class="form-control" [(ngModel)]="info.firstname" #firstname="ngModel" required>
+					</div>
+					
+					<div class="form-group col-lg-6">
+						<label>Lastname</label>
+						<input type="text" name="lastname" class="form-control" [(ngModel)]="info.lastname" #lastname="ngModel" required>
+					</div>					
+	
+					<div class="form-group col-lg-6">
+						<label>Email Address</label>
+						<input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" class="form-control" [(ngModel)]="info.email" #email="ngModel" required>
+					</div>
+					
+					<div class="form-group col-lg-6">
+						<label>Repeat Email Address</label>
+						<input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="emailCheck" class="form-control" [(ngModel)]="info.emailCheck" #emailCheck="ngModel" required>
+					</div>
+					
+					<div class="form-group col-lg-6">
+						<label>Password</label>
+						<input type="password" name="password" class="form-control" [(ngModel)]="info.password" #password="ngModel" required>
+					</div>
+					
+					<div class="form-group col-lg-6">
+						<label>Repeat Password</label>
+						<input type="password" name="passwordCheck" class="form-control" [(ngModel)]="info.passwordCheck" #passwordCheck="ngModel" required>
+					</div>
+					
+					<div class="col-sm-6">
+						<input type="checkbox" name="newsLetter" class="checkbox" [(ngModel)]="info.newsLetter" #newsLetter="ngModel"/>Sign up for our newsletter
+					</div>
+
+					<div class="col-sm-6">
+						<input type="checkbox" name="notifications" class="checkbox" [(ngModel)]="info.notifications" #notifications="ngModel" />Send notifications to this email
+					</div>
+
+					<div *ngIf="showWarnings" class="alert alert-danger col-lg-12">
+            <div [hidden]="validEmail">
+              Email already registered or does not match.
+            </div>
+            <div [hidden]="validPassword">
+              Password must match.
+            </div>
+        	</div>
+
+				
+				</div>
+			
+				<div class="col-md-6">
+					<h3 class="dark-grey">Terms and Conditions</h3>
+					<p>
+						By clicking on "Register" you agree to The Company's' Terms and Conditions
+					</p>
+					<p>
+						We're no strangers to love, You know the rules and so do I ,A full commitment's what I'm thinking of, You wouldn't get this from any other guy, I just want to tell you how I'm feeling, Gotta make you understand (Paragraph 13.5.8)
+					</p>
+					<p>
+						Never gonna give you up, never gonna let you down, Never gonna run around and desert you, Never gonna make you cry, never gonna say goodbye, Never gonna tell a lie and hurt you (Paragraph 13.5.6)
+					</p>
+					<p>
+						We've known each other for so long, Your heart's been aching but you're too shy to say it, Inside we both know what's been going on, We know the game and we're gonna play it, And if you ask me how I'm feeling, Don't tell me you're too blind to see (Paragraph 13.5.7)
+					</p>
+					<p>
+						Never gonna give you up, never gonna let you down, Never gonna run around and desert you, Never gonna make you cry, never gonna say goodbye, Never gonna tell a lie and hurt you (Paragraph 13.5.6)
+					</p>
+					
+					<button type="submit" class="btn btn-primary" [disabled]="regForm.invalid">Register</button>
+				</div>
+			</div>
+		</section>
+	</form>
+</div>

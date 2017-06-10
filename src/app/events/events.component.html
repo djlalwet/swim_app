@@ -1,0 +1,73 @@
+<div id="events" class="container-fluid" [ngStyle]="{'background-image': 'url(' + event.imgSrc + ')'}">
+  <div id="eventDetails" class="col-md-5">
+    <h3> {{event.name}} </h3>
+    <p>
+      We're no strangers to love, You know the rules and so do I ,A full commitment's what I'm thinking of, You wouldn't get this from any other guy, I just want to tell you how I'm feeling, Gotta make you understand (Paragraph 13.5.8)
+    </p>
+    <ul>
+      <li>
+        <strong>Event no. {{event.id}}</strong>
+      </li>
+      <li>
+        <strong> When: </strong>
+        <p> {{event.date}}</p>
+      </li>
+      <li>
+        <strong> Where: </strong>
+        <p> {{event.location}}</p>
+      </li>
+    </ul>
+  </div>
+  <div id="userResult" class="col-md-5 col-md-offset-1" *ngIf="user">
+    <h3 >{{user.firstname}} {{user.lastname}}</h3>
+    <div *ngIf="result; else notRegistered">
+      <ul>
+        <li>
+          <strong>Started: </strong> {{result.start.hour}}:{{result.start.min}}
+        </li>
+        <li>
+          <strong>Finished: </strong> {{result.end.hour}}:{{result.end.min}}
+        </li>
+        <li>
+          <strong>Race Time: </strong> {{raceTime.hour}}:{{raceTime.min}}
+        </li>
+      </ul>      
+    </div>
+
+    <ng-template #notRegistered>
+      <div [hidden]="registered">
+        <button (click)="eventRegistration()" class="btn btn-primary" > Join {{event.name}} </button>
+      </div>
+
+      <div [hidden]="!registered">
+	      <form (ngSubmit)="payAndJoinEvent()" name="regForm" #regForm="ngForm" novalidate>
+
+					<div class="form-group col-lg-6">
+						<label>Name (as written in card)</label>
+						<input type="text" name="nameInCard" class="form-control" [(ngModel)]="payment.name" #nameInCard="ngModel" required>
+					</div>
+
+					<div class="form-group col-lg-6">
+						<label>Card number </label>
+						<input type="text" name="cardNum" class="form-control" [(ngModel)]="payment.no" #cardNum="ngModel" required>
+					</div>
+
+          <div class="form-group col-lg-6">
+						<label>Expiry date </label>
+						<input type="date" name="expiry" class="form-control" [(ngModel)]="payment.expiry" #expiry="ngModel" required>
+					</div>
+
+          <div class="form-group col-lg-6">
+						<label>CVV number </label>
+						<input type="text" name="cvvNum" class="form-control" [(ngModel)]="payment.cvv" #cvvNum="ngModel" required>
+					</div>
+
+          <button type="submit" class="btn btn-primary" > Submit </button>
+
+          *not implemented
+	      </form>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
