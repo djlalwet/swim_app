@@ -19,6 +19,7 @@ export class EventsComponent implements OnInit {
   user;
   setBackground: string;
   subscription: Subscription;
+  routeSubscription: Subscription;
   result: EventResult;
   raceTime = {hour:0, min:0};
   registered = false;
@@ -44,7 +45,7 @@ export class EventsComponent implements OnInit {
 
   ngOnInit() {
     if(this.route.snapshot.params['id']){
-      this.route.params.switchMap((params: Params) => this.service.getEventPromise(+params['id']))
+      this.routeSubscription = this.route.params.switchMap((params: Params) => this.service.getEventPromise(+params['id']))
         .subscribe((event: Event) => {
           this.event = event;
           if(this.user){
@@ -57,6 +58,7 @@ export class EventsComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.routeSubscription.unsubscribe();
   }
 
   getRaceTime(){

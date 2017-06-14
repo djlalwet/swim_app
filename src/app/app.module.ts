@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CookieModule } from 'ngx-cookie';
@@ -35,6 +35,7 @@ import { ProfileComponent } from './profile/profile.component';
     CookieModule.forRoot(),
     routes
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [EventListService, UserService],
   bootstrap: [AppComponent]
 })
