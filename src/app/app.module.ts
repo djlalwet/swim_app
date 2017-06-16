@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CookieModule } from 'ngx-cookie';
 import { routes } from './app.router';
 
@@ -16,6 +17,7 @@ import { EventsComponent } from './events/events.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RouterOutletStubComponent, RouterLinkStubDirective } from '../testing/router-stubs';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,15 @@ import { ProfileComponent } from './profile/profile.component';
     EventsComponent,
     FooterComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    RouterOutletStubComponent,
+    RouterLinkStubDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
     CookieModule.forRoot(),
     routes
   ],

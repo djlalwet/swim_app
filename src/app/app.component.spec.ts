@@ -16,7 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { router, routes } from './app.router';
-import { RouterOutletStubComponent } from '../testing/router-stubs';
+import { RouterOutletStubComponent, RouterLinkStubDirective } from '../testing/router-stubs';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -24,7 +24,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        RouterOutletStubComponent,
+        RouterLinkStubDirective
       ],  
       imports: [
         BrowserModule,
