@@ -7,15 +7,16 @@
 }
 
 .homeLogo img,
-.homeLogo button {
+.homeLogo button,
+.homeLogo a{
   display: block;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 55px;
+  text-align: center;
 }
 
 .homeLogo img {
   width: 400px;
-
 }
 
 a,
@@ -39,13 +40,8 @@ a,
   max-width: 100% !important;
   height: 320px !important;
   border-radius: 10px;
-  border: 2px solid black;
+  border: 1px solid #333333;
   /*padding: 50px 0px !important;*/
   display: block;
   margin: auto;
-}
-
-.carousel-caption {
-  color: black;
-  background-color:rgba(255, 255, 255, 0.2);
 }

@@ -6,20 +6,46 @@
   background-size: cover;
 }
 
+.eventHeader {
+  padding: 5px 30px;
+  color: #333333;
+}
+
+.eventHeader p {
+  display: inline-block;
+}
+
+.eventHeader h3 {
+  margin-top: 5px;
+}
+
+.eventHeader .date {
+  float: right;
+}
+
 .col-md-5{
-  color: black;
-  padding: 10px 30px;
-  background-color:rgba(255, 255, 255, 0.5);
-  margin-top: 50px;
+  color: #333333;
+  padding: 5px 30px;
+  margin-top: 5px;
   display: block;
   border-radius: 4px;
 }
 
 img {
-  overflow-y: hidden !important;
-  width: 100%;
-  height: 70vh !important;
-  border-radius: 4px;
-  display: block !important;
+  max-width: 100% !important;
+  height: 320px !important;
+  border-radius: 10px;
+  border: 1px solid gray;
+  /*padding: 50px 0px !important;*/
+  display: block;
   margin: auto;
+  margin-bottom: 10px;
+}
+
+.results {
+  background-color:rgba(255, 255, 255, 0.5);
+  color: #507e94;
+  margin: 2px 10px;
+  border-radius: 10px;
+  border: 1px solid #333333;
 }

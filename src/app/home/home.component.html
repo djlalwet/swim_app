@@ -1,13 +1,30 @@
 <div id="home" (wheel)="scroll($event)" (keydown.arrowdown)="checkKey($event)">
 
   <div class="homeLogo" [@slideLogo]='logoState'>
-      <img [src]="'./assets/logo.png'" alt="Third">
-      <button class="btn btn-default join">Join</button>
+    <img [src]="'./assets/logo.png'" alt="Third">
+
+    <button class="btn btn-default join" (click)="showProfile()">View Profile</button>
+
+    <a>
+      <svg width="120.00000000000001" height="66" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+      <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
+      <g class="layer">
+        <title>Layer 1</title>
+        <ellipse fill="none" stroke="#333333" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="25.16667" cy="32.66667" rx="17.66667" ry="26.33333" id="svg_1"/>
+        <path fill="none" fill-opacity="0" stroke="#333333" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m25.16667,12l-0.16667,14.5" id="svg_2"/>
+        <path stroke="#333333" transform="rotate(90 25.2166633605957,37.2892074584961) " fill="#3f3f3f" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m25.47671,37.289206l-2.575129,-8.269976l4.630166,8.269976l-4.630166,8.269976l2.575129,-8.269976z" id="svg_17"/>
+        <path id="svg_3" stroke="#333333" transform="rotate(90 25.052488327026364,44.79162597656251) " fill="none" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" fill-opacity="0" d="m25.312533,44.791629l-2.57513,-8.26998l4.63017,8.26998l-4.63017,8.26997l2.57513,-8.26997z"/>
+        <text xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" id="svg_6" y="20.853517" x="51.927239" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#000000"/>
+        <text font-weight="bold" stroke="#000000" transform="matrix(0.6914488386119756,0,0,0.9684705138206482,27.922269770812182,1.1870067472773371) " xml:space="preserve" text-anchor="middle" font-family="arial" font-size="24" id="svg_12" y="28.392352" x="74.864457" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#333333">SCROLL</text>
+        <text id="svg_13" font-weight="bold" stroke="#000000" transform="matrix(0.6914488386119756,0,0,0.9684705138206482,27.922269770812182,1.1870067472773371) " xml:space="preserve" text-anchor="middle" font-family="arial" font-size="24" y="48.048088" x="73.090141" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#3f3f3f">DOWN</text>
+      </g>
+      </svg>
+    </a>
   </div>
 
   <div class="eventList" [@slideEventList]='eventListState'>
     <div class="eventEntry">
-      <img [src]="events[0].imgSrc" alt="Third">
+      <img [src]="events[0].imgSrc" alt="First event">
       <div class="caption">
         <h3>{{events[0].name}}</h3>
         <p>{{events[0].description}}</p>
@@ -15,7 +32,7 @@
     </div>
 
     <div class="eventEntry">
-      <img [src]="events[1].imgSrc" alt="Third">
+      <img [src]="events[1].imgSrc" alt="Second event">
       <div class="caption">
         <h3>{{events[1].name}}</h3>
         <p>{{events[1].description}}</p>
@@ -23,7 +40,7 @@
     </div>
 
     <div class="eventEntry">
-      <img [src]="events[2].imgSrc" alt="Third">
+      <img [src]="events[2].imgSrc" alt="Third event">
       <div class="caption">
         <h3>{{events[2].name}}</h3>
         <p>{{events[2].description}}</p>

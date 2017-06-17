@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User, UserService }  from '../user.service';
+import { CookieService } from 'ngx-cookie';
 
 declare var jquery:any;
 declare var $ :any;
@@ -29,9 +30,15 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     public router: Router,
-    public _userService: UserService) { }
+    public _userService: UserService,
+    private _cookieService:CookieService) {}
 
   ngOnInit() {
+    this.checkUser();
+  }
+
+  checkUser(){
+    this._cookieService.getObject("user") ? this.router.navigateByUrl("/home") : null;
   }
 
   register(info){

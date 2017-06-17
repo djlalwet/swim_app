@@ -1,37 +1,50 @@
-<div id="events" class="container-fluid" [ngStyle]="{'background-image': 'url(' + event.imgSrc + ')'}">
-  <div id="eventDetails" class="col-md-5">
+<div id="events" class="container-fluid">
+  <div class="eventHeader">
+    <p style="text-align: left"> Event no. {{event.id}} | {{event.location}}</p>
+    <h5 class="date" style="text-align: right"> {{event.date}}</h5>
     <h3> {{event.name}} </h3>
+  </div>
+  <div id="eventDetails" class="col-md-5">
+    <img [src]="event.imgSrc" alt="event image">
     <p>
      {{event.description}}
     </p>
-    <ul>
-      <li>
-        <strong>Event no. {{event.id}}</strong>
-      </li>
-      <li>
-        <strong> When: </strong>
-        <p> {{event.date}}</p>
-      </li>
-      <li>
-        <strong> Where: </strong>
-        <p> {{event.location}}</p>
-      </li>
-    </ul>
   </div>
+
   <div id="userResult" class="col-md-5 col-md-offset-1" *ngIf="user">
-    <h3 >{{user.firstname}} {{user.lastname}}</h3>
-    <div *ngIf="result; else notRegistered">
-      <ul>
-        <li>
-          <strong>Started: </strong> {{result.start.hour}}:{{result.start.min}}
-        </li>
-        <li>
-          <strong>Finished: </strong> {{result.end.hour}}:{{result.end.min}}
-        </li>
-        <li>
-          <strong>Race Time: </strong> {{raceTime.hour}}:{{raceTime.min}}
-        </li>
-      </ul>      
+    <div class="col-md-12 results">
+      <div class="col-md-6">
+        <h4> Swimmer: </h4>
+      </div>
+      <div class="col-md-6">
+        <h5>{{user.firstname}} {{user.lastname}}</h5>
+      </div>
+    </div>
+    <div class="col-md-12" *ngIf="result; else notRegistered">
+      <div class="col-md-12 results">
+        <div class="col-md-6">
+          <h4> Start: </h4>
+        </div>
+        <div class="col-md-6">
+          <h5>{{result.start.hour}}:{{result.start.min}}</h5>
+        </div>
+      </div>
+      <div class="col-md-12 results">
+        <div class="col-md-6">
+          <h4> Finish: </h4>
+        </div>
+        <div class="col-md-6">
+          <h5>{{result.end.hour}}:{{result.end.min}}</h5>
+        </div>
+      </div>
+      <div class="col-md-12 results">
+        <div class="col-md-6">
+          <h4> Race Time: </h4>
+        </div>
+        <div class="col-md-6">
+          <h5 >{{raceTime.hour}}:{{raceTime.min}}</h5>
+        </div>
+      </div>     
     </div>
 
     <ng-template #notRegistered>

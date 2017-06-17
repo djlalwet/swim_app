@@ -3,9 +3,13 @@
   border: none;
 }
 
+ul.nav li.dropdown:hover,
+ul.dropdown-menu {
+  background-color:rgba(255, 255, 255, 0.5);
+}
+
 ul.nav li.dropdown:hover ul.dropdown-menu {
   display: block;
-  background-color:rgba(255, 255, 255, 0);
 }
 
 ul.dropdown-menu li a:hover {

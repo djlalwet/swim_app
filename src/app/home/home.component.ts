@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Event, EventListService } from '../event-list.service';
+import { Router } from '@angular/router';
+import { Observable, Subject } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
+import { CookieService } from 'ngx-cookie';
 import { trigger, state, style, transition, animate, keyframes} from '@angular/animations';
 import { homeAnimations } from './home.component.animations';
+import { User, UserService }  from '../user.service';
+import { Event, EventListService } from '../event-list.service';
 
 declare var jquery:any;
 declare var $ :any;
@@ -14,35 +19,42 @@ declare var $ :any;
 })
 export class HomeComponent implements OnInit {
   imagePath: String = './assets/test.jpg';
+  user;
   events =[];
   eventId : number;
   logoState: String = 'show';
   eventListState: String = 'hide';
+  userLoggedIn: boolean = false
+  subscription: Subscription;
 
   constructor(
-    public _eventListService: EventListService) {
+    private _userService: UserService,
+    public _eventListService: EventListService,
+    public router: Router,
+    private _cookieService:CookieService) {
       this.eventId = 0;
       this.events = _eventListService.getEvents();
+      this.user = _cookieService.getObject("user");
+      this.userLoggedIn = this.user? true : false;
+      this.subscription = this._userService.getUserSubjectAsObservable().subscribe(() => {
+        this.user = this._cookieService.getObject("user");
+      });
   }
 
   ngOnInit() {
-    $('.item').on('mouseover', function(event){
-      $('#eventsCarousel').carousel('pause');
-    });
+    console.log('home created');
 
-    $('.item').on('mouseleave', function(event){
-      $('#eventsCarousel').carousel('cycle');
-    });
-
-    $(document).bind('keydown', (e) => {
-      console.log(e.key);
-      this.scroll(e);
-      return;
-    });
+    // $(document).bind('keydown', (e) => {
+    //   console.log(e.key);
+    //   this.scroll(e);
+    //   return;
+    // });
   }
 
   ngOnDestroy() {
-    $(document).unbind('keypress');
+    console.log("home destroy");
+    this.subscription.unsubscribe();
+    // $(document).unbind('keypress');
   }
 
   checkKey(event){
@@ -50,26 +62,26 @@ export class HomeComponent implements OnInit {
   }
 
   scroll(event){
-    console.log("in scroll ", event.key);
     if ((event.deltaY > 0) || (event.key == "ArrowDown")){
       this.scrollDown();
     }else if((event.deltaY < 0) ||  (event.key == "ArrowUp")){
       this.scrollUp();
     }
-
-    // this.logoState = (this.logoState === 'show' ? 'hide' : 'show');
-    // this.eventListState = (this.eventListState === 'show' ? 'hide' : 'show');
   }
 
   scrollUp(){
-    console.log("scroll Up");
     this.logoState = 'show';
     this.eventListState = 'hide';
   }
 
   scrollDown(){
-    console.log("scroll Down");
     this.logoState = 'hide';
     this.eventListState = 'show';
+  }
+
+  showProfile(){
+    this.user = this._cookieService.getObject("user");
+    let route  = this.user? '/profile' : '/registration';
+    this.router.navigateByUrl(route);
   }
 }
