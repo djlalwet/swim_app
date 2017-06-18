@@ -3,20 +3,25 @@
 }
 
 .homeLogo {
-  height: 100vh;
+  height: 92vh;
 }
 
 .homeLogo img,
 .homeLogo button,
-.homeLogo a{
+.homeLogo a {
   display: block;
   margin: auto;
-  margin-top: 55px;
   text-align: center;
 }
 
 .homeLogo img {
-  width: 400px;
+  padding: 10vh 0;
+  width: 33vw;
+  height: 60vh;
+}
+
+.homeLogo a {
+  padding-top: 15vh;
 }
 
 a,
@@ -27,13 +32,13 @@ a,
 .eventEntry {
   float: left;
   box-sizing: border-box;
-  width: 33.33%;
+  width: 33.33vw;
   height: 85vh;
-  padding: 80px 20px;
+  padding: 12.5vh 1.4vw;
 }
 
 .eventList {
-  height: 100vh;
+  height: 100%;
 }
 
 .eventList img {

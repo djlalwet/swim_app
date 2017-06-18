@@ -6,10 +6,10 @@ export const homeAnimations = [
         display: 'block',
       })),
       state('hide', style({
-        transform: 'translateY(-100%)',
+        transform: 'translateY(-100vh)',
       })),
       transition('show => hide', [
-        animate(250, style({transform: 'translateY(-100%)'}))
+        animate(250, style({transform: 'translateY(-100vh)'}))
       ]),
       transition('hide => show', [
         animate(250, style({transform: 'translateY(0)'}))
@@ -18,7 +18,7 @@ export const homeAnimations = [
     trigger('slideEventList', [
       state('show', style({
         display: 'block',
-        transform: 'translateY(-120%)'
+        transform: 'translateY(-100vh)'
       })),
       state('hide', style({
         transform: 'translateY(0)'
@@ -27,7 +27,7 @@ export const homeAnimations = [
         animate(250, style({transform: 'translateY(0)'}))
       ]),
       transition('hide => show', [
-        animate(250, style({transform: 'translateY(-120%)'}))
+        animate(250, style({transform: 'translateY(-100vh)'}))
       ])
     ]),
   ];
