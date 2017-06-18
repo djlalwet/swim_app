@@ -42,23 +42,19 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('home created');
-
-    // $(document).bind('keydown', (e) => {
-    //   console.log(e.key);
-    //   this.scroll(e);
-    //   return;
-    // });
+    $(document).keydown((e) => {
+      this.scroll(e);
+      $("body").trigger("click");
+    });
   }
 
   ngOnDestroy() {
-    console.log("home destroy");
     this.subscription.unsubscribe();
-    // $(document).unbind('keypress');
+    $(document).off();
   }
 
   checkKey(event){
-    console.log(event.key);
+    this.scroll(event);
   }
 
   scroll(event){

@@ -1,4 +1,4 @@
-<div id="home" (wheel)="scroll($event)" (keydown.arrowdown)="checkKey($event)">
+<div id="home" (wheel)="scroll($event)" (keydown)="checkKey($event)">
 
   <div class="homeLogo" [@slideLogo]='logoState'>
     <img [src]="'./assets/logo.png'" alt="Third">
